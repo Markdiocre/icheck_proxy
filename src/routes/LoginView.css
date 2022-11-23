@@ -1,0 +1,43 @@
+
+
+#login{
+
+    height: 100vh !important;
+
+}
+
+.login-text{
+    font-weight: 700;
+    color: #006a9e;
+}
+
+.form-label{
+    font-size: 1.5rem !important;
+    color: #444444 !important;
+}
+
+.form-control-lg{
+    border-radius: 1.5rem !important;
+    border-color: #444444;
+    border-width: 5px;
+}
+
+.form-control-lg:hover, .form-control-lg:focus{
+    border-color: #89c937;
+}
+
+.submit{
+    color: white;
+    background-color: #006a9e;
+    font-weight: 700;
+    font-size: 2rem;
+    border-radius: 1.5rem;
+}
+
+.submit:hover{
+    color: white;
+    background-color: #89c937;
+    font-weight: 700;
+    font-size: 2rem;
+    border-radius: 1.5rem;
+}
