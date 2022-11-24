@@ -1,0 +1,21 @@
+.button-background {
+  width: 100%;
+  background: #006a9e;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+  height: 125px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  margin: 4px;
+}
+
+p.title {
+  font-family: "League Spartan", sans-serif;
+  font-weight: bold !important;
+}

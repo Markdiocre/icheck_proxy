@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import "./assets/static/stylesheet.css";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
@@ -10,8 +11,6 @@ import reportWebVitals from "./reportWebVitals";
 //Routes import
 import LoginView from "./routes/LoginView";
 import MenuView from "./routes/MenuView";
-
-import "./assets/static/stylesheet.css";
 
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
