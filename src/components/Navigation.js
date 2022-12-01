@@ -2,6 +2,9 @@ import "./Navigation.css";
 import logo from "../assets/iCheck-logo.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import  axios  from "axios";
+
+import {decryptData} from '../Global/crypto'
 
 
 function Navigation() {
@@ -9,15 +12,32 @@ function Navigation() {
   const navigate = useNavigate();
 
   const logout = ()=>{
-    Swal.fire({
-      icon: "success",
-      text: "Successfully Logged out!"
-    });
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('student_number');
-    localStorage.removeItem('student_name');
-    navigate("/");
+    axios.delete("http://localhost:4000/api/auth/logout",{
+      headers: {
+        authorization: "Bearer "+ decryptData(localStorage.getItem("token"))
+      }
+    }).then((res)=>{
+      Swal.fire({
+        icon: "success",
+        text: "Successfully Logged out!"
+      });
+  
+      localStorage.removeItem('token');
+      localStorage.removeItem('student_number');
+      localStorage.removeItem('student_name');
+      navigate("/");
+    }).catch((err)=>{
+      console.log(decryptData(localStorage.getItem("token")))
+      let info = decryptData(err.response.data.m);
+      Swal.fire({
+        icon: "error",
+        text: info.status.message
+      });
+    })
+
+
+    
   }
 
   const goHome = () =>{

@@ -7,10 +7,25 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-import { encryptData, decryptString } from "../Global/crypto";
+import { encryptData, decryptString, decryptData } from "../Global/crypto";
 
 function Menu() {
   const navigate = useNavigate();
+  const [coughs, setCough] = useState(false)
+  const [sore, setSore] = useState(false)
+  const [fatigue, setFatigue] = useState(false)
+  const [headaches, setHeadache] = useState(false)
+  const [body_pain, setBodyPain] = useState(false)
+  const [dizziness, setDizziness] = useState(false)
+  const [fever, setFever] = useState(false)
+  const [diarrhea, setDiarrhea] = useState(false)
+  const [taste, setTaste] = useState(false)
+  const [breathing, setBreathing] = useState(false)
+  const [interaction, setInteraction] = useState(false)
+  const [symptoms, setSymptoms] = useState(false)
+  const [caring, setCaring] = useState(false)
+  const [temp, setTemp] = useState()
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/");
@@ -35,10 +50,26 @@ function Menu() {
             state: {
               data:{
                 m: encryptData({
-                  token: localStorage.getItem("token")
+                  token_value: decryptData(localStorage.getItem("token")),
+                  temp: temp,
+                  fever: fever ? 1:0,
+                  cold: coughs ? 1:0,
+                  body_pains: body_pain ? 1:0,
+                  sore_throat: sore ? 1:0,
+                  fatigue_or_tiredness: fatigue ? 1:0,
+                  headache: headaches ? 1:0,
+                  diarrhea: diarrhea ? 1:0,
+                  loss_of_taste_or_smell: taste ? 1:0,
+                  difficulty_breathing: breathing ?1:0,
+                  dizziness: dizziness? 1:0,
+                  acquired_symptoms: symptoms ? 1:0,
+                  covid_interaction: interaction ? 1:0,
+                  caring_infected_patient: caring ? 1:0
                 })
               },
-              student_number: decryptString(localStorage.getItem('student_name'))
+              student_number: decryptString(localStorage.getItem('student_number')),
+              student_name: decryptString(localStorage.getItem('student_name'))
+
             }
           })
         }
@@ -48,20 +79,7 @@ function Menu() {
 
 
 
-  const [coughs, setCough] = useState(false)
-  const [sore, setSore] = useState(false)
-  const [fatigue, setFatigue] = useState(false)
-  const [headaches, setHeadache] = useState(false)
-  const [body_pain, setBodyPain] = useState(false)
-  const [dizziness, setDizziness] = useState(false)
-  const [fever, setFever] = useState(false)
-  const [diarrhea, setDiarrhea] = useState(false)
-  const [taste, setTaste] = useState(false)
-  const [breathing, setBreathing] = useState(false)
-  const [interaction, setInteraction] = useState(false)
-  const [symptoms, setSymptoms] = useState(false)
-  const [caring, setCaring] = useState(false)
-  const [temp, setTemp] = useState()
+ 
 
   return (
     <div>

@@ -50,13 +50,12 @@ function LoginView() {
         }
       })
       .catch((err) => {
-        // let info = decryptData(err.data.m);
-        console.log(err);
-        // Swal.fire({
-        //   icon: "error",
-        //   title: info.status.remarks,
-        //   text: info.status.message,
-        // });
+        let info = decryptData(err.response.data.m);
+        Swal.fire({
+          icon: "error",
+          title: info.status.remarks,
+          text: info.status.message,
+        });
       });
   };
 
