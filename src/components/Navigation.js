@@ -1,18 +1,40 @@
 import "./Navigation.css";
 import logo from "../assets/iCheck-logo.png";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 function Navigation() {
+
+  const navigate = useNavigate();
+
+  const logout = ()=>{
+    Swal.fire({
+      icon: "success",
+      text: "Successfully Logged out!"
+    });
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('student_number');
+    localStorage.removeItem('student_name');
+    navigate("/");
+  }
+
+  const goHome = () =>{
+    navigate("/menu");
+  }
+
   return (
     <nav className="navbar navbar-light navbar-blue fixed-top">
       <div className="container-fluid">
-        <img src={logo} alt="logo" height="40" />
-        <div>
+        <img src={logo} alt="logo" height="40" onClick={goHome} className="clickables"/>
+        <div onClick={logout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
             height="35"
             fill="currentColor"
-            className="bi bi-box-arrow-right"
+            className="bi bi-box-arrow-right clickables"
             viewBox="0 0 16 16"
           >
             <path

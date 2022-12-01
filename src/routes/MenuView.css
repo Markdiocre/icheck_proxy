@@ -1,3 +1,33 @@
-.red {
-  color: #a72312 !important;
+
+
+.input-group-text{
+  background-color: #006a9e;
+  border-color: #006a9e;
+  border-width: 5px;
+  border-right: unset;
+  border-bottom-left-radius: 1.5rem !important;
+  border-top-left-radius: 1.5rem !important;
+}
+
+.submit{
+  width: 100%;
+  background-color: #89c937;
+}
+
+.submit:hover{
+  background-color: #006a9e;
+}
+
+.form-control-lg {
+  border-bottom-left-radius: unset;
+  border-top-left-radius: unset;
+  
+  border-color: #006a9e;
+  border-width: 5px;
+  border-radius: 1.5rem;
+}
+
+.form-control-lg:hover, .form-control-lg:focus{
+  box-shadow: unset;
+  border-color: #89c937;
 }

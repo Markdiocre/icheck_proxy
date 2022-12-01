@@ -1,5 +1,3 @@
-
-
 #login{
 
     height: 100vh !important;
@@ -16,15 +14,16 @@
     color: #444444 !important;
 }
 
-.form-control-lg{
-    border-radius: 1.5rem !important;
+/* .form-control-lg{
+    border-radius: 1.5rem;
+    border-left: 5px;
     border-color: #444444;
     border-width: 5px;
 }
 
 .form-control-lg:hover, .form-control-lg:focus{
     border-color: #89c937;
-}
+} */
 
 .submit{
     color: white;

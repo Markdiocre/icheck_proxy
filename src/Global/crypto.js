@@ -9,9 +9,20 @@ const decryptData = (data) => {
     return decryptedData
 }
 
+const decryptString = (data) => {
+    let bytes = AES.decrypt(data, key);
+    let decryptedData = bytes.toString(enc)
+    return decryptedData
+}
+
 const encryptData = (data) => {
 
     return AES.encrypt(JSON.stringify(data), key).toString();
 }
 
-export {decryptData, encryptData}
+const encryptString = (data) => {
+
+    return AES.encrypt(data, key).toString();
+}
+
+export {decryptData, encryptData, decryptString, encryptString}

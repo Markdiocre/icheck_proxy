@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import { encryptData, decryptData } from "../Global/crypto";
+import { encryptData, decryptData, encryptString } from "../Global/crypto";
 
 function LoginView() {
   const [studnum, setStudnum] = useState("");
@@ -37,7 +37,9 @@ function LoginView() {
             title: info.status.remarks,
             text: info.status.message,
           });
-          localStorage.setItem("token", info.payload.token);
+          localStorage.setItem("token", encryptData(info.payload.token));
+          localStorage.setItem("student_number", encryptString(info.payload.student_number));
+          localStorage.setItem("student_name", encryptString(info.payload.student_name));
           navigate("/menu");
         } else {
           Swal.fire({
@@ -67,7 +69,7 @@ function LoginView() {
   };
 
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-lg-3"></div>
         <div className="col-lg-6">

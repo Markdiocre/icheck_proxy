@@ -11,6 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 //Routes import
 import LoginView from "./routes/LoginView";
 import MenuView from "./routes/MenuView";
+import CodeView from "./routes/CodeView";
 
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
   {
     path: "/menu",
     element: <MenuView />,
+  },
+  ,
+  {
+    path: "/qr",
+    element: <CodeView />,
   },
 ]);
 
