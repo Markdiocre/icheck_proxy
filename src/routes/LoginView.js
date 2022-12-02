@@ -23,7 +23,7 @@ function LoginView() {
   const submitForm = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/api/auth/login", {
+      .post("/auth/login", {
         m: encryptData({
           student_number: studnum,
           student_password: password,

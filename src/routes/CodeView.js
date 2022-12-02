@@ -20,15 +20,15 @@ function CodeView() {
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-2"></div>
-                    <div className="col-md-8">
+                    <div className="col-md-4"></div>
+                    <div className="col-md-4">
                         <div
                             id="qr"
                             className="d-flex align-items-center justify-content-center"
                         >
                             <div className="row">
                                 <div className="row">
-                                    <p className="text-center"><QRCode value={JSON.stringify(location.state.data)} size={400}/></p>
+                                    <p className="text-center"><QRCode value={JSON.stringify(location.state.data)}/></p>
 
                                 </div>
                                 <div className="row pt-3">
@@ -48,7 +48,7 @@ function CodeView() {
                         </div>
 
                     </div>
-                    <div className="col-md-2"></div>
+                    <div className="col-md-4"></div>
                 </div>
             </div>
         </div>

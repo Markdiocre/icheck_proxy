@@ -13,7 +13,7 @@ function Navigation() {
 
   const logout = ()=>{
 
-    axios.delete("http://localhost:4000/api/auth/logout",{
+    axios.delete("/auth/logout",{
       headers: {
         authorization: "Bearer "+ decryptData(localStorage.getItem("token"))
       }

@@ -43,5 +43,14 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.4.3"
-  }
+  },
+  "keywords": [
+    "react",
+    "create-react-app",
+    "template",
+    "pwa",
+    "workbox",
+    "service-worker"
+  ],
+  "description": "A progressive web app template for Create React App, using Workbox."
 }
