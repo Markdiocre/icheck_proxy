@@ -11,20 +11,20 @@ import { encryptData, decryptString, decryptData } from "../Global/crypto";
 
 function Menu() {
   const navigate = useNavigate();
-  const [coughs, setCough] = useState(false)
-  const [sore, setSore] = useState(false)
-  const [fatigue, setFatigue] = useState(false)
-  const [headaches, setHeadache] = useState(false)
-  const [body_pain, setBodyPain] = useState(false)
-  const [dizziness, setDizziness] = useState(false)
-  const [fever, setFever] = useState(false)
-  const [diarrhea, setDiarrhea] = useState(false)
-  const [taste, setTaste] = useState(false)
-  const [breathing, setBreathing] = useState(false)
-  const [interaction, setInteraction] = useState(false)
-  const [symptoms, setSymptoms] = useState(false)
-  const [caring, setCaring] = useState(false)
-  const [temp, setTemp] = useState()
+  const [coughs, setCough] = useState(false);
+  const [sore, setSore] = useState(false);
+  const [fatigue, setFatigue] = useState(false);
+  const [headaches, setHeadache] = useState(false);
+  const [body_pain, setBodyPain] = useState(false);
+  const [dizziness, setDizziness] = useState(false);
+  const [fever, setFever] = useState(false);
+  const [diarrhea, setDiarrhea] = useState(false);
+  const [taste, setTaste] = useState(false);
+  const [breathing, setBreathing] = useState(false);
+  const [interaction, setInteraction] = useState(false);
+  const [symptoms, setSymptoms] = useState(false);
+  const [caring, setCaring] = useState(false);
+  const [temp, setTemp] = useState();
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -37,49 +37,46 @@ function Menu() {
       Swal.fire({
         icon: "error",
         title: "No temperature",
-        text: "Please input a temperature in Celcius"
-      })
+        text: "Please input a temperature in Celcius",
+      });
     } else {
       Swal.fire({
-        text: 'By clicking Submit, I hereby authorize Gordon College , to collect and process the data indicated herein for the purpose of contact tracing effecting control of the COVID 19 transmission. I understand that my personal information is protected by RA 10173 or the data privacy act of 2012.',
-        confirmButtonText: 'Submit',
+        text: "By clicking Submit, I hereby authorize Gordon College , to collect and process the data indicated herein for the purpose of contact tracing effecting control of the COVID 19 transmission. I understand that my personal information is protected by RA 10173 or the data privacy act of 2012.",
+        confirmButtonText: "Submit",
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          navigate('/qr', {
+          navigate("/qr", {
             state: {
-              data:{
-                m: encryptData({
+              data: {
+                m: {
                   token_value: decryptData(localStorage.getItem("token")),
-                  temp: temp,
-                  fever: fever ? 1:0,
-                  cold: coughs ? 1:0,
-                  body_pains: body_pain ? 1:0,
-                  sore_throat: sore ? 1:0,
-                  fatigue_or_tiredness: fatigue ? 1:0,
-                  headache: headaches ? 1:0,
-                  diarrhea: diarrhea ? 1:0,
-                  loss_of_taste_or_smell: taste ? 1:0,
-                  difficulty_breathing: breathing ?1:0,
-                  dizziness: dizziness? 1:0,
-                  acquired_symptoms: symptoms ? 1:0,
-                  covid_interaction: interaction ? 1:0,
-                  caring_infected_patient: caring ? 1:0
-                })
+                  t: temp,
+                  f: fever ? 1 : 0,
+                  c: coughs ? 1 : 0,
+                  bp: body_pain ? 1 : 0,
+                  st: sore ? 1 : 0,
+                  fot: fatigue ? 1 : 0,
+                  h: headaches ? 1 : 0,
+                  d: diarrhea ? 1 : 0,
+                  lt: taste ? 1 : 0,
+                  db: breathing ? 1 : 0,
+                  di: dizziness ? 1 : 0,
+                  as: symptoms ? 1 : 0,
+                  ci: interaction ? 1 : 0,
+                  cip: caring ? 1 : 0,
+                },
               },
-              student_number: decryptString(localStorage.getItem('student_number')),
-              student_name: decryptString(localStorage.getItem('student_name'))
-
-            }
-          })
+              student_number: decryptString(
+                localStorage.getItem("student_number")
+              ),
+              student_name: decryptString(localStorage.getItem("student_name")),
+            },
+          });
         }
-      })
+      });
     }
-  }
-
-
-
- 
+  };
 
   return (
     <div>
@@ -101,67 +98,136 @@ function Menu() {
                 <h4 className="h4">I am currently expiriencing:</h4>
                 <div className="row">
                   <div className="col-md col-sm-4 pt-3">
-                    <Button text="Coughs or Colds" onUpdate={() => setCough(!coughs)} status={coughs} />
+                    <Button
+                      text="Coughs or Colds"
+                      onUpdate={() => setCough(!coughs)}
+                      status={coughs}
+                    />
                   </div>
                   <div className="col-md col-sm-4 pt-3 ">
-                    <Button text="Sore Throat" onUpdate={() => setSore(!sore)} status={sore} />
+                    <Button
+                      text="Sore Throat"
+                      onUpdate={() => setSore(!sore)}
+                      status={sore}
+                    />
                   </div>
                   <div className="col-md col-sm-4 pt-3">
-                    <Button text="Fatigue or Tiredness" onUpdate={() => setFatigue(!fatigue)} status={fatigue} />
+                    <Button
+                      text="Fatigue or Tiredness"
+                      onUpdate={() => setFatigue(!fatigue)}
+                      status={fatigue}
+                    />
                   </div>
                   <div className="col-md col-sm-6 pt-3">
-                    <Button text="Headaches" onUpdate={() => setHeadache(!headaches)} status={headaches} />
+                    <Button
+                      text="Headaches"
+                      onUpdate={() => setHeadache(!headaches)}
+                      status={headaches}
+                    />
                   </div>
                   <div className="col-md col-sm-6 pt-3">
-                    <Button text="Body Pain" onUpdate={() => setBodyPain(!body_pain)} status={body_pain} />
+                    <Button
+                      text="Body Pain"
+                      onUpdate={() => setBodyPain(!body_pain)}
+                      status={body_pain}
+                    />
                   </div>
-
                 </div>
                 <div className="row">
                   <div className="col-md col-sm-4 pt-3">
-                    <Button text="Dizziness" onUpdate={() => setDizziness(!dizziness)} status={dizziness} />
+                    <Button
+                      text="Dizziness"
+                      onUpdate={() => setDizziness(!dizziness)}
+                      status={dizziness}
+                    />
                   </div>
                   <div className="col-md col-sm-4 pt-3 ">
-                    <Button text="Fever" onUpdate={() => setFever(!fever)} status={fever} />
+                    <Button
+                      text="Fever"
+                      onUpdate={() => setFever(!fever)}
+                      status={fever}
+                    />
                   </div>
                   <div className="col-md col-sm-4 pt-3">
-                    <Button text="Diarrhea" onUpdate={() => setDiarrhea(!diarrhea)} status={diarrhea} />
+                    <Button
+                      text="Diarrhea"
+                      onUpdate={() => setDiarrhea(!diarrhea)}
+                      status={diarrhea}
+                    />
                   </div>
                   <div className="col-md col-sm-6 pt-3">
-                    <Button text="Loss of Tase or Smell" onUpdate={() => setTaste(!taste)} status={taste} />
+                    <Button
+                      text="Loss of Tase or Smell"
+                      onUpdate={() => setTaste(!taste)}
+                      status={taste}
+                    />
                   </div>
                   <div className="col-md col-sm-6 pt-3">
-                    <Button text="Difficulty of breathing" onUpdate={() => setBreathing(!breathing)} status={breathing} />
+                    <Button
+                      text="Difficulty of breathing"
+                      onUpdate={() => setBreathing(!breathing)}
+                      status={breathing}
+                    />
                   </div>
                 </div>
                 <div className="row pt-3">
                   <div className="col-md-12">
-                    <Button text="I had face-to-face contact with a probable or confirmed Covid 19 case within 1 meter and for more than 15 minutes for the past 14 days" onUpdate={() => setInteraction(!interaction)} status={interaction} />
+                    <Button
+                      text="I had face-to-face contact with a probable or confirmed Covid 19 case within 1 meter and for more than 15 minutes for the past 14 days"
+                      onUpdate={() => setInteraction(!interaction)}
+                      status={interaction}
+                    />
                   </div>
                 </div>
                 <div className="row pt-3">
                   <div className="col-md-12">
-                    <Button text="I provided direct care for a patient with a probable or confirmed COVID 19 case without using proper personal protective equipment for the past 14 days
-" onUpdate={() => setCaring(!caring)} status={caring} />
+                    <Button
+                      text="I provided direct care for a patient with a probable or confirmed COVID 19 case without using proper personal protective equipment for the past 14 days
+"
+                      onUpdate={() => setCaring(!caring)}
+                      status={caring}
+                    />
                   </div>
                 </div>
                 <div className="row pt-3">
                   <div className="col-md-12">
-                    <Button text="I have any of the symptoms above in the last 3 days" onUpdate={() => setSymptoms(!symptoms)} status={symptoms} />
+                    <Button
+                      text="I have any of the symptoms above in the last 3 days"
+                      onUpdate={() => setSymptoms(!symptoms)}
+                      status={symptoms}
+                    />
                   </div>
                 </div>
                 <div className="row py-3">
                   <div className="col-md-8 pt-2">
                     <div className="input-group">
-                      <span className="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#fff" className="bi bi-thermometer-half" viewBox="0 0 16 16">
-                        <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z" />
-                        <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z" />
-                      </svg></span>
-                      <input type="number" className="form-control form-control-lg" placeholder="In Celcius" aria-label="Username" aria-describedby="basic-addon1" onChange={(e) => setTemp(e.target.value)} />
+                      <span className="input-group-text">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="40"
+                          height="40"
+                          fill="#fff"
+                          className="bi bi-thermometer-half"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z" />
+                          <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z" />
+                        </svg>
+                      </span>
+                      <input
+                        type="number"
+                        className="form-control form-control-lg"
+                        placeholder="In Celcius"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                        onChange={(e) => setTemp(e.target.value)}
+                      />
                     </div>
                   </div>
                   <div className="col-md-4 pt-2">
-                    <button className="btn submit" onClick={submitButton}>Submit</button>
+                    <button className="btn submit" onClick={submitButton}>
+                      Submit
+                    </button>
                   </div>
                 </div>
               </div>
