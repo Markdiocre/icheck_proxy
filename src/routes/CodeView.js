@@ -13,7 +13,6 @@ function CodeView() {
     if (!localStorage.getItem("token")) {
       navigate("/");
     }
-    console.log(location.state.data);
   });
 
   return (
@@ -35,7 +34,7 @@ function CodeView() {
                   </p>
                 </div>
                 <div className="row pt-3">
-                  <p className="text-center">{new Date().toUTCString()}</p>
+                  <p className="text-center">{new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })}</p>
                 </div>
                 <div className="row pt-3">
                   <h4 className="text-center h4">
